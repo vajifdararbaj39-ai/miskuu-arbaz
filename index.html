@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Miskat (Mikuu) ❤️</title>
+    <style>
+        :root {
+            --primary: #ff2a5f;
+            --secondary: #ff758c;
+            --bg-dark: #09020f;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        /* Fullscreen Vertical Swipe Container (Direct Opens Website) */
+        .swipe-container {
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            background: radial-gradient(circle at center, #250b28 0%, #09020f 100%);
+        }
+
+        .slide {
+            width: 100%;
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 400px;
+            height: 82vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        h2 {
+            color: #ff758c;
+            font-size: 1.7rem;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(255,117,140,0.4);
+        }
+
+        .swipe-hint {
+            position: absolute;
+            bottom: 12px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        /* Media Frames */
+        .photo-frame, .video-frame {
+            width: 100%;
+            max-width: 270px;
+            height: 310px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 8px 25px rgba(255,42,95,0.4);
+            margin: 10px 0;
+            background: #000;
+        }
+
+        .photo-frame img, .video-frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Shayari Box */
+        .shayari-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .shayari-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 12px;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ffccd5;
+        }
+
+        /* Long Letter */
+        .long-letter {
+            text-align: left;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: #fce4ec;
+            white-space: pre-line;
+            width: 100%;
+            padding: 5px;
+        }
+
+        /* Mini Game Box */
+        #game-box {
+            width: 100%;
+            height: 220px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 2px dashed var(--primary);
+            margin-top: 10px;
+        }
+
+        .game-item {
+            position: absolute;
+            font-size: 2.3rem;
+            cursor: pointer;
+            animation: pulse 0.8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* Vouchers Grid */
+        .voucher-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .voucher-btn {
+            background: linear-gradient(135deg, #ff2a5f, #c9184a);
+            padding: 14px 8px;
+            border-radius: 14px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        /* Massive Grand Finale */
+        .huge-love-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff758c;
+            margin-bottom: 10px;
+        }
+
+        .huge-love {
+            font-size: 3.2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff2a5f, #ffffff, #ff758c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255,42,95,0.9);
+            margin: 15px 0;
+            animation: glow 1.5s infinite alternate;
+            line-height: 1.1;
+        }
+
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 10px #ff2a5f); }
+            100% { filter: drop-shadow(0 0 30px #ff758c); }
+        }
+
+        /* Floating Hearts Animation */
+        .bg-heart {
+            position: fixed;
+            color: rgba(255, 42, 95, 0.4);
+            font-size: 1.5rem;
+            animation: floatUp 6s infinite linear;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Audio Control */
+        #music-control {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: 25px;
+            z-index: 9999;
+            font-weight: bold;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Audio Song File -->
+    <audio id="bg-song" loop preload="auto">
+        <source src="song.mp4" type="video/mp4">
+    </audio>
+
+    <div id="music-control" onclick="toggleAudio()">🎵 Music: On</div>
+
+    <!-- Fullscreen Vertical Swipe Container -->
+    <div class="swipe-container" id="main-app">
+
+        <!-- Slide 1: I Love You Mikuu & Photo (miskuu.jpg) -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>I Love You Mikuu ❤️</h2>
+                <p style="font-size: 1rem; color: #ff758c; font-weight: bold; margin-bottom: 5px;">Happy Birthday Mikuu! 🌸</p>
+                
+                <div class="photo-frame">
+                    <img src="miskuu.jpg" alt="Mikuu Photo" onerror="this.src='photo1.jpg'">
+                </div>
+
+                <p style="font-size: 0.85rem; margin-top: 5px;">Ye special surprise sirf tumhare liye hai! Niche se upar swipe karte jao... ✨</p>
+            </div>
+            <div class="swipe-hint">👆 Swipe up for next slide</div>
+        </div>
+
+        <!-- Slide 2: Welcome & Photo 1 -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Happy Birthday Mikuu! 🎉</h2>
+                <p style="font-size: 1rem; color: #ff758c; font-weight: bold; margin-bottom: 5px;">(Miskat - My Queen)</p>
+                
+                <div class="photo-frame">
+                    <img src="photo1.jpg" alt="Mikuu Photo">
+                </div>
+
+                <p style="font-size: 0.9rem; margin-top: 5px;">Aaj ka ye special surprise sirf meri jaan ke liye hai! 💖</p>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 3: Romantic Shayaris (Part 1) -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Romantic Shayaris ✨</h2>
+                <div class="shayari-container">
+                    <div class="shayari-box">
+                        "Chehre par khushi aur aankhon me noor ho, Tum jo chaho wo sab tumko manzoor ho. Birthday par mile tumhein duniya ki har khushi, Mera pyaar hamesha tumhare sath ho!"
+                    </div>
+                    <div class="shayari-box">
+                        "Teri muskaan se roshan meri har subah hoti hai, Tu paas na ho phir bhi teri mehak hoti hai. Mikuu, tum paas raho ya door, Dil me bas tumhare hi pyar ki jagah hoti hai!"
+                    </div>
+                    <div class="shayari-box">
+                        "Khuda kare tera har din ek naye jashn jaisa ho, Teri zindagi me kabhi koi gham na ho!"
+                    </div>
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 4: Romantic Shayaris (Part 2) -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>More Shayaris 🌹</h2>
+                <div class="shayari-container">
+                    <div class="shayari-box">
+                        "Teri aankhon me basta hai mera jahan, Tumse hi shuru hoti hai meri har dastan!"
+                    </div>
+                    <div class="shayari-box">
+                        "Sajti rahe ye mehfil yun hi pyaar ki, Har khushi mile tumhe mere pyaar ki!"
+                    </div>
+                    <div class="shayari-box">
+                        "Tum meri wo subah ho jiska mujhe hamesha intezaar rehta hai, aur wo raat ho jiske khwabon me bas tum hoti ho!"
+                    </div>
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 5: Cake Cutting Video -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Cake Cutting Moment 🎂</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 5px;">Wo cute sa celebratory lamha...</p>
+                <div class="video-frame">
+                    <video id="v1" controls playsinline loop muted>
+                        <source src="cake.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 6: Mikuu Video -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Our Special Moment 💍</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 5px;">Ye pal mere dil ke sabse kareeb hai...</p>
+                <div class="video-frame">
+                    <video id="v2" controls playsinline loop muted>
+                        <source src="mikuu.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 7: First Love Letter -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Dil Ki Baatein 💌</h2>
+                <div class="long-letter">
+                    <strong>Meri Pyaari Mikuu,</strong>
+
+                    Aaj tumhara birthday hai aur mere paas kehne ko laakhon baatein hain. Jab se tum meri zindagi me aayi ho, sab kuch kitna haseen ho gaya hai. 
+
+                    Tumhara wo gussa karna, phir pyar se manana, tumhari har chhoti-chhoti baat mujhe duniya ki har khushi de jaati hai. Main shayad har waqt ye jata nahi pata, lekin tum meri poori duniya ho.
+
+                    Zindagi ke is safar me chahe kitni bhi mushkilein aayein, Arbaz hamesha tumhare sath hai, tumhara shield ban kar. Tum bas yun hi hasta muskurata rehna, kyunki tumhari smile hi meri taakat hai.
+
+                    Happy Birthday Meri Jaan! Tumhe wo sab kuch mile jiski tumne khwahish ki hai. ❤️
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 8: Second Love Letter -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Ek Aur Dil Ka Paigam 💖</h2>
+                <div class="long-letter">
+                    <strong>Mikuu Meri Jaan,</strong>
+
+                    Kuch log zindagi me aate hain aur kuch waqt ke liye rukte hain, par tum woh ho jo meri rooh me bas gayi ho. Tumhare sath bitaya gaya har ek lamha mere liye kisi khubsurat tohfe se kam nahi hai.
+
+                    Chahe kitna bhi ladaai-jhagda ho jaye, par din ke ant me mera sukoon sirf tum ho. Main chahta hoon ki tumhari har khushi me mera naam ho aur tumhare har dukh ko main apne upar le loon.
+
+                    Tum meri sirf girlfriend nahi, meri jaan ho, meri mohabbat ho, aur mera sab kuch ho. Hamesha aise hi paas rehna mere. I love you so much, Mikuu! ✨💕
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 9: Mini Game -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Love Bite Challenge! 🎮💋</h2>
+                <p style="font-size: 0.9rem;">Hearts par click karke <strong>15 Points</strong> score karo!</p>
+                <p style="font-size: 1.1rem; font-weight: bold; color: #ff758c; margin: 5px 0;">Score: <span id="game-score">0</span>/15</p>
+
+                <div id="game-box"></div>
+                <div id="game-win" style="display: none; margin-top: 8px; color: #ff758c; font-weight: bold; font-size: 0.9rem;">
+                    🎉 Yay Mikuu! You won! <br> Reward: Unlimited Hugs & Kisses Forever! 😘🤗
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up</div>
+        </div>
+
+        <!-- Slide 10: Gift Vouchers -->
+        <div class="slide">
+            <div class="glass-card">
+                <h2>Your Gift Vouchers 🎟️</h2>
+                <p style="font-size: 0.9rem;">Click to unlock your surprises:</p>
+                <div class="voucher-grid">
+                    <div class="voucher-btn" onclick="alert('🎟️ UNLOCKED:\n\n1 Free Ice Cream & Coffee Date with Arbaz! 🍦☕')">🍦 Ice Cream Date</div>
+                    <div class="voucher-btn" onclick="alert('🎟️ UNLOCKED:\n\n1 Full Day NO ARGUMENT Guarantee! Today Arbaz will not fight at all! 😇')">😇 No Fight Day</div>
+                    <div class="voucher-btn" onclick="alert('🎟️ UNLOCKED:\n\nLate Night Unlimited Call & Secrets Sharing Session! 📞✨')">📞 Late Night Call</div>
+                    <div class="voucher-btn" onclick="alert('🎟️ UNLOCKED:\n\nSpecial Extra Tight Hug reserved for Mikuu! 🤗💖')">🤗 Big Tight Hug</div>
+                </div>
+            </div>
+            <div class="swipe-hint">👆 Swipe up for final surprise</div>
+        </div>
+
+        <!-- Slide 11: Massive Grand Finale -->
+        <div class="slide">
+            <div class="glass-card" style="justify-content: center; align-items: center; text-align: center;">
+                <div class="huge-love-title">Meri Jaan, Mikuu...</div>
+                <div class="huge-love">I LOVE YOU<br>MISKUUUU!</div>
+                <p style="font-size: 1.1rem; margin-top: 15px; color: #ffccd5; font-weight: bold;">Happy Birthday Once Again! 👑✨</p>
+                <div style="margin-top: 25px; font-size: 0.9rem; opacity: 0.8;">~ Forever Yours, Arbaz ❤️</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Auto play music and start effects on first interaction
+        document.addEventListener('click', function initAudio() {
+            var song = document.getElementById('bg-song');
+            if (song && song.paused) {
+                song.play().catch(function(e) {});
+            }
+        }, { once: true });
+
+        // Smart Video Observer
+        document.addEventListener("DOMContentLoaded", function() {
+            var videos = document.querySelectorAll('video');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(e => {});
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.6 });
+
+            videos.forEach(video => observer.observe(video));
+
+            startFloatingHearts();
+            spawnTarget();
+        });
+
+        // Music Toggle
+        var isAudioPlaying = true;
+        function toggleAudio() {
+            var song = document.getElementById('bg-song');
+            var ctrl = document.getElementById('music-control');
+            if (isAudioPlaying) {
+                song.pause();
+                ctrl.innerText = "🎵 Music: Off";
+                isAudioPlaying = false;
+            } else {
+                song.play();
+                ctrl.innerText = "🎵 Music: On";
+                isAudioPlaying = true;
+            }
+        }
+
+        // Mini Game
+        var gameScore = 0;
+        var targets = ['💋', '💖', '😘', '❤️', '💌', '🎮', '🌹'];
+
+        function spawnTarget() {
+            if (gameScore >= 15) return;
+            var box = document.getElementById('game-box');
+            if(!box) return;
+            var item = document.createElement('div');
+            item.className = 'game-item';
+            item.innerHTML = targets[Math.floor(Math.random() * targets.length)];
+
+            var maxX = box.clientWidth - 50;
+            var maxY = box.clientHeight - 50;
+
+            item.style.left = Math.max(10, Math.random() * maxX) + 'px';
+            item.style.top = Math.max(10, Math.random() * maxY) + 'px';
+
+            item.onclick = function() {
+                gameScore++;
+                var scoreElem = document.getElementById('game-score');
+                if(scoreElem) scoreElem.innerText = gameScore;
+                item.remove();
+
+                if (gameScore < 15) {
+                    spawnTarget();
+                } else {
+                    var winElem = document.getElementById('game-win');
+                    if(winElem) winElem.style.display = 'block';
+                }
+            };
+            box.appendChild(item);
+        }
+
+        // Floating Hearts
+        function startFloatingHearts() {
+            for (var i = 0; i < 15; i++) {
+                var heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+                heart.style.animationDelay = (Math.random() * 3) + 's';
+                document.body.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+              </html>
+              
